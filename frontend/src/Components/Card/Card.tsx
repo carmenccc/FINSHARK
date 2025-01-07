@@ -5,7 +5,15 @@ interface Props {
   price: number;
 }
 
-const Card = ({ companyName, ticker, price }: Props) => {
+// Type the function:
+//      React.FC<Props> -- defines the type and prop types for the whole function
+//                          <Props>相当于:Props, 可以二选一，也可以都写
+//      : JSX.Element   -- defines he return types
+const Card: React.FC<Props> = ({
+  companyName,
+  ticker,
+  price,
+}: Props): JSX.Element => {
   return (
     <div className="card">
       <img
