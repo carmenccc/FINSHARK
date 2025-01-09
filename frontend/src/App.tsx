@@ -13,7 +13,7 @@ function App() {
   const [serverError, setServerError] = useState<string | null>(null);
   const [portfolioValues, setPortfolioValues] = useState<string[]>([]);
 
-  // Event Handlers
+  // Search event Handlers
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
@@ -32,6 +32,7 @@ function App() {
     }
   };
 
+  // Portfolio event handlers
   const onPortfolioCreate = (e: any) => {
     e.preventDefault();
     // Ensure no duplicate add
@@ -39,6 +40,13 @@ function App() {
     if (exists) return;
     // Add to portfolio
     setPortfolioValues([...portfolioValues, e.target[0].value]);
+  };
+
+  const onPortfolioDelete = (e: any) => {
+    e.preventDefault();
+    setPortfolioValues(
+      portfolioValues.filter((value) => value !== e.target[0].value)
+    );
   };
 
   // Return JSX
@@ -49,7 +57,10 @@ function App() {
         handleSearchChange={handleSearchChange}
         onSearchSubmit={onSearchSubmit}
       />
-      <ListPortfolio portfolioValues={portfolioValues} />
+      <ListPortfolio
+        portfolioValues={portfolioValues}
+        onPortfolioDelete={onPortfolioDelete}
+      />
       <CardList
         searchResults={searchResult}
         onPortfolioCreate={onPortfolioCreate}
