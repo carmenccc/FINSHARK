@@ -5,6 +5,7 @@ import Search from "./Components/Search/Search";
 import { CompanySearch } from "./company.e";
 import { searchCompanies } from "./api";
 import ListPortfolio from "./Components/Portfolio/ListPortfolio/ListPortfolio";
+import Navbar from "./Components/Navbar/Navbar";
 
 function App() {
   // Define state
@@ -52,6 +53,7 @@ function App() {
   // Return JSX
   return (
     <div className="App">
+      <Navbar />
       <Search
         search={search}
         handleSearchChange={handleSearchChange}
