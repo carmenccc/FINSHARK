@@ -11,12 +11,13 @@ function App() {
   const [searchResult, setSearchResult] = useState<CompanySearch[]>([]);
   const [serverError, setServerError] = useState<string | null>(null);
 
-  const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
 
   // SynthethicEvent -- a general event type
-  const handleClick = async (e: SyntheticEvent) => {
+  const onSearchSubmit = async (e: SyntheticEvent) => {
+    e.preventDefault();
     // Call Api
     const result = await searchCompanies(search);
 
@@ -32,8 +33,8 @@ function App() {
     <div className="App">
       <Search
         search={search}
-        handleTextChange={handleTextChange}
-        handleClick={handleClick}
+        handleSearchChange={handleSearchChange}
+        onSearchSubmit={onSearchSubmit}
       />
       {serverError && <div>unable to connecct to API</div>}
       <CardList searchResults={searchResult} />
