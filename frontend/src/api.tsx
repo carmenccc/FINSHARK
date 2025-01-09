@@ -1,5 +1,5 @@
 import axios from "axios";
-import { CompanySearch } from "./company.e";
+import { CompanyProfile, CompanySearch } from "./company.e";
 
 const API_KEY = "Ql8mgRFJzAKbNFtxtTG83MakJ4SRGqvB";
 // CONST API_KEY = process.env.REACT_APP_API_KEY;
@@ -23,5 +23,16 @@ export const searchCompanies = async (query: string) => {
       console.log("unexpected error: ", error);
       return "An unexpected error has occured.";
     }
+  }
+};
+
+export const getCompanyProfile = async (query: string) => {
+  try {
+    const result = await axios.get<CompanyProfile[]>(
+      `https://financialmodelingprep.com/api/v3/profile/${query}?apikey=${API_KEY}`
+    );
+    return result;
+  } catch (error: any) {
+    console.log("error message: ", error.message);
   }
 };
