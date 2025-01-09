@@ -52,7 +52,7 @@ function App() {
 
   // Return JSX
   return (
-    <div className="App">
+    <>
       <Navbar />
       <Search
         search={search}
@@ -68,7 +68,7 @@ function App() {
         onPortfolioCreate={onPortfolioCreate}
       />
       {serverError && <div>unable to connecct to API</div>}
-    </div>
+    </>
   );
 }
 
