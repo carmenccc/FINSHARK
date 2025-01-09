@@ -8,7 +8,7 @@ import { searchCompanies } from "./api";
 function App() {
   // Define state
   const [search, setSearch] = useState<string>("");
-  const [searchResult, setSearchResult] = useState<CompanySearch[]>();
+  const [searchResult, setSearchResult] = useState<CompanySearch[]>([]);
   const [serverError, setServerError] = useState<string | null>(null);
 
   const handleTextChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -36,7 +36,7 @@ function App() {
         handleClick={handleClick}
       />
       {serverError && <div>unable to connecct to API</div>}
-      <CardList />
+      <CardList searchResults={searchResult} />
     </div>
   );
 }

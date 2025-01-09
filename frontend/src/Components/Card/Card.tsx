@@ -1,35 +1,26 @@
+import { CompanySearch } from "../../company.e";
+
 // Data type checking
 interface Props {
-  companyName: string;
-  ticker: string;
-  price: number;
+  id: string;
+  searchResult: CompanySearch;
 }
 
 // Type the function:
 //      React.FC<Props> -- defines the type and prop types for the whole function
-//                          <Props>相当于:Props, 可以二选一，也可以都写
+//                          <Props>is equivalant to Props, it's more official to write both
 //      : JSX.Element   -- defines he return types
-const Card: React.FC<Props> = ({
-  companyName,
-  ticker,
-  price,
-}: Props): JSX.Element => {
+const Card: React.FC<Props> = ({ id, searchResult }: Props): JSX.Element => {
   return (
-    <div className="card">
-      <img
-        src="https://upload.wikimedia.org/wikipedia/commons/2/23/Black_and_white.jpg"
-        alt="image"
-      />
+    <div key={id} id={id} className="card">
       <div className="details">
         <h2>
-          {companyName}({ticker})
+          {searchResult.name}({searchResult.symbol})
         </h2>
-        <p>${price}</p>
+        <p>${searchResult.currency}</p>
       </div>
       <p className="info">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab cupiditate
-        fuga commodi corrupti deleniti, error sint qui facere hic esse. Quis
-        ipsum incidunt neque autem explicabo unde voluptates corporis ut?
+        {searchResult.exchangeShortName} - {searchResult.stockExchange}
       </p>
     </div>
   );
