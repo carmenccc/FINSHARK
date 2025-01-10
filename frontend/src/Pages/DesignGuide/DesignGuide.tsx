@@ -27,7 +27,7 @@ const DesignGuide = (props: Props) => {
         Table takes in a configuration object and company data as params. Use
         the config to style your table.
       </h3>
-      <Table />
+      <Table data={TestDataCompany} config={tableConfig} />
     </>
   );
 };

@@ -17,7 +17,7 @@ const tableConfig = [
     label: "Current Ratio",
     render: (company: CompanyKeyMetrics) => company.currentRatioTTM,
     subTitle:
-      "a liquidity ratio that measures a company's ability to pay short-term obligations or those due within one year.",
+      "A liquidity ratio that measures a company's ability to pay short-term obligations or those due within one year.",
   },
   {
     label: "Return On Equity",
