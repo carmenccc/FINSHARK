@@ -32,7 +32,7 @@ namespace api.Controllers
             return Ok(commentDtos);
         }
 
-        [HttpGet("{id: int}")]
+        [HttpGet("{id:int}")]
         public async Task<IActionResult> GetById([FromRoute] int id){
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
@@ -46,7 +46,7 @@ namespace api.Controllers
         }
 
         [HttpPost]
-        [Route("{stockId: int}")]
+        [Route("{stockId:int}")]
         public async Task<IActionResult> Create([FromRoute] int stockId, [FromBody] CreateCommentDto commentDto){
            if (!ModelState.IsValid)
                 return BadRequest(ModelState);
