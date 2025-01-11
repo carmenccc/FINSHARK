@@ -39,8 +39,8 @@ namespace api.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create([FromBody] CreateStockRequestDto stockDto){
-            var newStock = stockDto.ToStockFromCreateDto();
+        public IActionResult Create([FromBody] CreateStockRequestDto createDto){
+            var newStock = createDto.ToStockFromCreateDto();
             _context.Stocks.Add(newStock);
             _context.SaveChanges();
                 // The newStock object is populated with a new id right after the insertion(SaveChanges)
@@ -48,6 +48,27 @@ namespace api.Controllers
             // Generates a 201 Created HTTP response. 
             // It includes the location of the newly created resource in the Location header of the response.
             return CreatedAtAction(nameof(GetById), new { id = newStock.Id}, newStock.ToStockDto());
+        }
+
+        [HttpPut]
+        [Route("{id}")]
+        public IActionResult Update([FromRoute] int id, [FromBody] UpdateStockRequestDto updateDto){
+            var oldStock = _context.Stocks.FirstOrDefault(x => x.Id == id);
+
+            if(oldStock == null){
+                return NotFound();
+            }
+
+            oldStock.Symbol = updateDto.Symbol;
+            oldStock.CompanyName = updateDto.CompanyName;
+            oldStock.Purchase = updateDto.Purchase;
+            oldStock.LastDiv = updateDto.LastDiv;
+            oldStock.Industry = updateDto.Industry;
+            oldStock.MarketCap = updateDto.MarketCap;
+            
+            _context.SaveChanges();
+
+            return Ok(oldStock.ToStockDto());
         }
     }
 }
