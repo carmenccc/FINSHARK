@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Data;
+using api.Dtos.Stock;
 using api.Mappers;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,6 +36,18 @@ namespace api.Controllers
             }
 
             return Ok(stock.ToStockDto());
+        }
+
+        [HttpPost]
+        public IActionResult Create([FromBody] CreateStockRequestDto stockDto){
+            var newStock = stockDto.ToStockFromCreateDto();
+            _context.Stocks.Add(newStock);
+            _context.SaveChanges();
+                // The newStock object is populated with a new id right after the insertion(SaveChanges)
+
+            // Generates a 201 Created HTTP response. 
+            // It includes the location of the newly created resource in the Location header of the response.
+            return CreatedAtAction(nameof(GetById), new { id = newStock.Id}, newStock.ToStockDto());
         }
     }
 }
