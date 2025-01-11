@@ -156,3 +156,7 @@ C:\Workspace\Portfolio\FINSHARK\api\obj\Debug\net9.0\api.MvcApplicationPartsAsse
 C:\Workspace\Portfolio\FINSHARK\api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 C:\Workspace\Portfolio\FINSHARK\api\bin\Debug\net9.0\Swashbuckle.AspNetCore.Swagger.dll
 C:\Workspace\Portfolio\FINSHARK\api\bin\Debug\net9.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Workspace\Portfolio\FINSHARK\api\bin\Debug\net9.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Workspace\Portfolio\FINSHARK\api\bin\Debug\net9.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Workspace\Portfolio\FINSHARK\api\bin\Debug\net9.0\Newtonsoft.Json.dll
+C:\Workspace\Portfolio\FINSHARK\api\bin\Debug\net9.0\Newtonsoft.Json.Bson.dll
