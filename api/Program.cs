@@ -3,16 +3,21 @@ using api.Interfaces;
 using api.Models;
 using api.Repository;
 using api.Service;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.OpenApi;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddOpenApi();
+
+
 
 builder.Services.AddControllers().AddNewtonsoftJson(options =>
 {
@@ -66,16 +71,16 @@ builder.Services.AddScoped<ITokenService, TokenService>();
 // Control dependency injection
 var app = builder.Build();
 
-app.MapOpenApi();
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
+    app.MapOpenApi();
+
    app.UseSwaggerUI(options => {
     options.SwaggerEndpoint("/openapi/v1.json", "v1");
    });
-
-   
 }
 
 app.UseHttpsRedirection();
