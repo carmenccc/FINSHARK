@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using api.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Build.Framework;
 using Microsoft.EntityFrameworkCore;
 
 namespace api.Data
@@ -84,6 +86,25 @@ namespace api.Data
                     StockId = 3
                 }
             );
+
+            // Seed identity role data
+            List<IdentityRole> roles = new List<IdentityRole>
+            {
+                new IdentityRole
+                {
+                    Id = "d9b6f39f-761d-4f12-9fcd-92c44cc11d91",
+                    Name = "Admin",
+                    NormalizedName = "ADMIN"
+                },
+                 new IdentityRole
+                {
+                    Id = "8c8d5b1e-46ef-497e-900e-f1c0f8b7a0d6",
+                    Name = "User",
+                    NormalizedName = "USER"
+                },
+            };
+            
+            modelBuilder.Entity<IdentityRole>().HasData(roles);
         }
     }
 }
