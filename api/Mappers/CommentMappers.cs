@@ -12,19 +12,21 @@ namespace api.Mappers
     {
         public static CommentDto ToCommentDto(this Comment commentModel){
             return new CommentDto{
-                 Id = commentModel.Id,
+                Id = commentModel.Id,
                 Title = commentModel.Title,
                 Content = commentModel.Content,
                 CreatedOn = commentModel.CreatedOn,
+                CreatedBy = commentModel.AppUser.UserName,
                 StockId = commentModel.StockId
             };
         }
 
-        public static Comment ToCommentFromCreate (this CreateCommentDto commentDto, int stockId){
+        public static Comment ToCommentFromCreate (this CreateCommentDto commentDto, int stockId, string appUserId){
             return new Comment{
                 Title = commentDto.Title,
                 Content = commentDto.Content,
-                StockId = stockId
+                StockId = stockId,
+                AppUserId = appUserId
             };
         }
 
