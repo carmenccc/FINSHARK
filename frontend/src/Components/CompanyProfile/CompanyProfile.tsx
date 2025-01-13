@@ -8,6 +8,7 @@ import {
   formatLargeNonMonetaryNumber,
   formatRatio,
 } from "../../Helpers/NumberFormating";
+import StockComment from "../StockComment/StockComment";
 
 type Props = {};
 
@@ -99,6 +100,7 @@ function CompanyProfile({}: Props) {
       {companyData ? (
         <>
           <RatioList config={tableConfig} data={companyData} />
+          <StockComment stockSymbol={ticker} />
         </>
       ) : (
         <Spinner />

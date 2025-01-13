@@ -6,7 +6,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 type Props = {};
 
-type RegisterFormsInputs = {
+type RegisterFormInputs = {
   email: string;
   userName: string;
   password: string;
@@ -24,9 +24,9 @@ const RegisterPage = (props: Props) => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<RegisterFormsInputs>({ resolver: yupResolver(validation) });
+  } = useForm<RegisterFormInputs>({ resolver: yupResolver(validation) });
 
-  const handleRegister = (form: RegisterFormsInputs) => {
+  const handleRegister = (form: RegisterFormInputs) => {
     registerUser(form.email, form.userName, form.password);
   };
 
