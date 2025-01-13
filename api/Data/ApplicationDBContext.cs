@@ -78,7 +78,8 @@ namespace api.Data
                     Title = "Strong Earnings Report",
                     Content = "Apple's recent earnings beat expectations.",
                     CreatedOn = new DateTime(2025, 1, 1),
-                    StockId = 1
+                    StockId = 1,
+                    AppUserId = "4ccc56d4-c440-4bbf-94db-beee5d29e6d1"
                 },
                 new Comment
                 {
@@ -86,7 +87,8 @@ namespace api.Data
                     Title = "Cloud Growth",
                     Content = "Microsoft's cloud revenue is growing steadily.",
                     CreatedOn = new DateTime(2025, 1, 3),
-                    StockId = 2
+                    StockId = 2,
+                    AppUserId = "525976f9-0a9f-4084-9c80-ee8102e361c0"
                 },
                 new Comment
                 {
@@ -94,7 +96,8 @@ namespace api.Data
                     Title = "EV Leader",
                     Content = "Tesla remains the leader in the EV market.",
                     CreatedOn = new DateTime(2025, 1, 5),
-                    StockId = 3
+                    StockId = 3,
+                    AppUserId = "525976f9-0a9f-4084-9c80-ee8102e361c0"
                 }
             );
 
