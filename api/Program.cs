@@ -89,11 +89,12 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+// Enable CORS
 app.UseCors(x => x
     .AllowAnyMethod()
     .AllowAnyHeader()
     .AllowCredentials()
-    //.WithOrigins("https://localhost:44351) for deployment
+    //.WithOrigins("https://localhost:44351)
     .SetIsOriginAllowed(origin => true));
 
 app.UseAuthentication();

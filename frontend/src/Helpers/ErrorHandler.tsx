@@ -14,12 +14,18 @@ export const handleError = (error: any) => {
         toast.warning(err.data.errors[e][0]);
       }
     } else if (err?.data) {
-      toast.warning(err.data);
+      if (Array.isArray(err?.data)) {
+        for (let val of err?.data) {
+          toast.warning(val.description);
+        }
+      } else toast.warning(err.data);
     } else if (err?.status == 401) {
       toast.warning("please login");
       window.history.pushState({}, "LoginPage", "/login");
     } else if (err) {
       toast.warning(err?.data);
+    } else {
+      console.log("Unkown error");
     }
   }
 };

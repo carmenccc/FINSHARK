@@ -9,6 +9,8 @@ import IncomeStatement from "../../Components/IncomeStatement/IncomeStatement";
 import DesignGuide from "../DesignGuide/DesignGuide";
 import BalanceSheet from "../../Components/BalanceSheet/BalanceSheet";
 import CashFlowStatement from "../../Components/CashFlowStatement/CashFlowStatement";
+import LoginPage from "../LoginPage/LoginPage";
+import RegisterPage from "../RegisterPage/RegisterPage";
 
 export const router = createBrowserRouter([
   {
@@ -16,6 +18,8 @@ export const router = createBrowserRouter([
     element: <App />,
     children: [
       { path: "", element: <HomePage /> },
+      { path: "login", element: <LoginPage /> },
+      { path: "register", element: <RegisterPage /> },
       { path: "search", element: <SearchPage /> },
       { path: "dg", element: <DesignGuide /> },
       //   :ticker as param
