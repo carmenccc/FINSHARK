@@ -18,12 +18,14 @@ namespace api.Controllers
         private readonly UserManager<AppUser> _userManager;
         private readonly IPortfolioRepository _portfolioRepo;
         private readonly IStockRepository _stockRepo;
+        private readonly IFMPService _fmpService;
         
-        public PortfolioController(UserManager<AppUser> userManager, IPortfolioRepository portfolioRepo, IStockRepository stockRepo)
+        public PortfolioController(UserManager<AppUser> userManager, IPortfolioRepository portfolioRepo, IStockRepository stockRepo, IFMPService fmpService)
         {
             _userManager = userManager;
             _portfolioRepo = portfolioRepo;
             _stockRepo = stockRepo;
+            _fmpService = fmpService;
         }
 
         [HttpGet]
@@ -45,11 +47,24 @@ namespace api.Controllers
         [Authorize]
         public async Task<IActionResult> AddPortfolio(string symbol)
         {
-            // Find the user & stock
+            // Find the user
             var username = User.GetUserName();
             var appUser = await _userManager.FindByNameAsync(username);
-            var stock = await _stockRepo.GetBySymbolAsync(symbol);
 
+            // Check if stock exists in db, if not fetch from fmp api service and create one
+            var stock = await _stockRepo.GetBySymbolAsync(symbol);
+            if(stock == null)
+            {
+                stock = await _fmpService.FindStockBySymbolAsync(symbol);
+                if(stock == null)
+             {
+                 return BadRequest("Stock does not exist");
+             }
+             else
+             {
+                 await _stockRepo.CreateAsync(stock);
+             }
+            }
             if (stock == null) return BadRequest("Stock not found");
 
             // Check for repetitive add

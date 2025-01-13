@@ -72,6 +72,7 @@ builder.Services.AddScoped<IStockRepository, StockRepository>();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IPortfolioRepository, PortfolioRepository>();
+builder.Services.AddHttpClient<IFMPService, FMPService>();
 
 // Control dependency injection
 var app = builder.Build();
