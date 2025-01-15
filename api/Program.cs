@@ -84,6 +84,7 @@ if (app.Environment.IsDevelopment())
 
     app.UseSwaggerUI(options => {
         options.SwaggerEndpoint("/openapi/v1.json", "v1");
+        options.RoutePrefix = string.Empty;
     });
 }
 
@@ -94,7 +95,7 @@ app.UseCors(x => x
     .AllowAnyMethod()
     .AllowAnyHeader()
     .AllowCredentials()
-    //.WithOrigins("https://localhost:44351)
+    .WithOrigins("https://finshark-api-demo-bnabd7efc5avb6b6.canadacentral-01.azurewebsites.net")
     .SetIsOriginAllowed(origin => true));
 
 app.UseAuthentication();

@@ -2,7 +2,8 @@ import axios from "axios";
 import { PortfolioGet, PortfolioPost } from "../Models/Portfolio";
 import { handleError } from "../Helpers/ErrorHandler";
 
-const api = "http://localhost:5195/api/portfolio/";
+const api =
+  "https://finshark-api-demo-bnabd7efc5avb6b6.canadacentral-01.azurewebsites.net/api/portfolio/";
 
 export const portfolioGetAPI = async () => {
   try {

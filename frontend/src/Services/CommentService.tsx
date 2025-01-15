@@ -2,7 +2,8 @@ import axios from "axios";
 import { CommentGet, CommentPost } from "../Models/Comment";
 import { handleError } from "../Helpers/ErrorHandler";
 
-const api = "http://localhost:5195/api/comment/";
+const api =
+  "https://finshark-api-demo-bnabd7efc5avb6b6.canadacentral-01.azurewebsites.net/api/comment/";
 
 export const commentPostAPI = async (
   title: string,
