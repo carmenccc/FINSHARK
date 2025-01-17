@@ -4,3 +4,4 @@
 # Ignore build and debug files
 Debug/
 Release/
+.fake
