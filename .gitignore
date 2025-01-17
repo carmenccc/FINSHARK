@@ -5,3 +5,5 @@
 Debug/
 Release/
 .fake
+# Local Netlify folder
+.netlify
