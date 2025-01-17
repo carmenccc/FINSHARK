@@ -1,3 +1,5 @@
+# Project Demo
+(https://finsharkcc.netlify.app/)
 
 # Finshark Finance Project
 > Copywrite: This is a duplicate project for study purpose, with extra features such as front-end details and deployment functions added for polish purpose. For original code please refer to (https://github.com/teddysmithdev/FinShark)
@@ -20,6 +22,7 @@ Skill Stacks Implementation:
 # Feature Showcase
 
 - Login & Authorization
+  
 - Search Company Stocks
 - Add Company To User Profile
 - Company Dashboard
